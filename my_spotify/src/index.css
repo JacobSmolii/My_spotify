@@ -1,3 +1,8 @@
+/* takes the scrollbar out but allows you still scroll on the screen */
+body::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   margin: 0;
 }

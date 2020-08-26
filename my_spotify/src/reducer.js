@@ -2,13 +2,15 @@ import { StateContext } from "./StateProvider";
 
 export const initialState = {
 	user: null,
-	playlist: [],
+	playlists: [],
 	playing: false,
-	item: null
+	item: null,
+	// remove after finished developing...
+	token: "BQAZPQHCjedtKB54d16q3UovpHCUly7bipri0xah-ZVdbaSLq5…KixzjThK1qJ4S3ZqLWjesvwlnk1Vbt_oRxs-MhB5isCyOYCb1",
 }
 
 const reducer = (state, action) => {
-	console.log(action);
+	// console.log(action);
 
 	// Action -> type, [payload]/whatever you give a name
 
@@ -17,6 +19,16 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				user: action.user
+			}
+		case "SET_TOKEN":
+			return {
+				...state,
+				token: action.token
+			}
+		case "SET_PLAYLIST":
+			return {
+				...state,
+				playlists: action.playlists
 			}
 		default:
 			return state;
