@@ -1,3 +1,5 @@
+// Hosting URL: https://my-spotify-92f50.web.app
+
 import React, { useEffect } from 'react';
 import './App.css';
 import Login from './Login'
