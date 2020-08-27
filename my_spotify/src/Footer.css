@@ -10,6 +10,10 @@
 	color: white;
 }
 
+.footer_right * .MuiSlider-root {
+	color: green;
+}
+
 .footer_left {
 	flex: 0.3;
 	display: flex;

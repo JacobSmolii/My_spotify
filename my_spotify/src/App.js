@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Login from './Login'
 import { getTokenFromUrl } from './spotify';
@@ -9,7 +9,7 @@ import { useStateValue } from './StateProvider';
 const spotify = new SpotifyWebApi();
 
 function App() {
-	const [{ user, token }, dispatch] = useStateValue();
+	const [{ token }, dispatch] = useStateValue();
 
 	useEffect(() => {
 		const hash = getTokenFromUrl();
@@ -29,14 +29,25 @@ function App() {
 				})
 			})
 
-			spotify.getUserPlaylists()
+			spotify
+				.getUserPlaylists()
 				.then(playlists => {
+					console.log('app_aplay', playlists)
 					dispatch({
 						type: "SET_PLAYLIST",
 						playlists: playlists,
 					})
 				})
 
+				spotify
+					.getPlaylist('37i9dQZEVXcCOH30KsAzy1') // this is ID from the spotify url account
+					.then(response => {
+						console.log('app', response)
+						dispatch({
+							type: "SET_DISCOVER_WEEKLY",
+							discover_weekly: response
+						})
+					})
 		}
 	}, [])
 

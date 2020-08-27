@@ -1,19 +1,14 @@
-import { StateContext } from "./StateProvider";
-
 export const initialState = {
 	user: null,
 	playlists: [],
 	playing: false,
 	item: null,
+	discover_weekly: null,
 	// remove after finished developing...
-	token: "BQAZPQHCjedtKB54d16q3UovpHCUly7bipri0xah-ZVdbaSLq5…KixzjThK1qJ4S3ZqLWjesvwlnk1Vbt_oRxs-MhB5isCyOYCb1",
+	// token: "BQAZPQHCjedtKB54d16q3UovpHCUly7bipri0xah-ZVdbaSLq5…KixzjThK1qJ4S3ZqLWjesvwlnk1Vbt_oRxs-MhB5isCyOYCb1",
 }
 
 const reducer = (state, action) => {
-	// console.log(action);
-
-	// Action -> type, [payload]/whatever you give a name
-
 	switch(action.type) {
 		case "SET_USER":
 			return {
@@ -30,9 +25,14 @@ const reducer = (state, action) => {
 				...state,
 				playlists: action.playlists
 			}
+		case "SET_DISCOVER_WEEKLY":
+			return {
+				...state,
+				discover_weekly: action.discover_weekly
+			}
 		default:
 			return state;
 	}
 }
 
-export default reducer
+export default reducer;
